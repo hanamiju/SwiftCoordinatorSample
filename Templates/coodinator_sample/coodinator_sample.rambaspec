@@ -1,0 +1,14 @@
+# Template information section
+name: "coodinator_sample"
+summary: "Swift Coordinator module template with UIViewController playing as a View."
+author: "masao"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+- {name: Configrator.swift,  path: Code/configurator.swift.liquid}
+- {name: Coordinator.swift, path: Code/coordinator.swift.liquid}
+- {name: ViewModel.swift, path: Code/view_model.swift.liquid}
+- {name: ViewController.swift, path: Code/viewcontroller.swift.liquid}

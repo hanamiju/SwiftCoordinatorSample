@@ -1,0 +1,29 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    var viewModel: {{ module_info.name }}ViewModel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+}
+
+extension {{ module_info.name }}ViewController: ViewControllerInitializable {
+    static func viewController() -> {{ module_info.name }}ViewController {
+        
+        let vc = UIStoryboard.init(name: "{{ module_info.name }}", bundle: nil).instantiateInitialViewController() as! {{ module_info.name }}ViewController
+        {{ module_info.name }}Configurator().configure(viewController: vc)
+        
+        return vc
+    }
+}
