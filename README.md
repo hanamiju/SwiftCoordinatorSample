@@ -11,27 +11,29 @@ Coordinatorを使ってViewControllerから画面遷移の処理を引き剥が�
 
 ```swift:Configrator.swift
 
-func configure(with vc: ViewController) {
+    func configure(with vc: ViewController) {
 		let coorcinator = Coordinator(currentVC: vc)
-    let viewModel = ViewModel(with: coorcinator)
+        let viewModel = ViewModel(with: coorcinator)
         
-    vc.viewModel = viewModel
-}
+        vc.viewModel = viewModel
+    }
 ```
 
 ## Coordinator
 
 * 遷移の処理のみを書く
+* ViewControllerの入力パラメータが欲しい場合は引数とかにすればいいのでは（適当）
+* 遷移先が複数あったらその分関数を作ればいいのでは（適当）
 
 ```swift:Coordinator.swift
-func push() {
-    let nextVC = SecondViewController.viewController()
+    func push() {
+        let nextVC = SecondViewController.viewController()
 		currentVC.navigationController?.pushViewController(nextVC, animated: true)
-}
+    }
     
-func pop() {
-    currentVC.navigationController?.popViewController(animated: true)
-}
+    func pop() {
+        currentVC.navigationController?.popViewController(animated: true)
+    }
 ```
 
 ## ViewModel
@@ -41,18 +43,18 @@ func pop() {
 
 
 ```swift:ViewModel.swift
-private let coodinator: Coordinator // CoodinatorはViewModelだけが使える
-let labelStr: String
+    private let coodinator: Coordinator // CoodinatorはViewModelだけが使える
+    let labelStr: String
     
-init(with coodinator: Coordinator, labelStr: String) {
-    self.coodinator = coodinator
-    self.labelStr = labelStr
-}
+    init(with coodinator: Coordinator, labelStr: String) {
+        self.coodinator = coodinator
+        self.labelStr = labelStr
+    }
 
-// Viewのイベントで呼び出す
-func push() {
-    coodinator.push()
-}
+    // Viewのイベントで呼び出す
+    func push() {
+        coodinator.push()
+    }
 
 ```
 
